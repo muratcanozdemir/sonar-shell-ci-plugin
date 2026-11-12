@@ -11,15 +11,29 @@
 
   <name>Shell &amp; CI plugin for SonarQube</name>
   <description>Analysis of shell scripts (ShellCheck) and CI pipelines (GitHub Actions, GitLab CI, Azure Pipelines) for SonarQube</description>
+  <url>https://github.com/muratcanozdemir/sonar-shell-ci-plugin</url>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/license/mit</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <url>https://github.com/muratcanozdemir/sonar-shell-ci-plugin</url>
+    <connection>scm:git:https://github.com/muratcanozdemir/sonar-shell-ci-plugin.git</connection>
+  </scm>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
     <sonar.api.version>14.1.0.5543</sonar.api.version>
     <snakeyaml.version>3.2</snakeyaml.version>
-    <gson.version>2.13.2</gson.version>
+    <gson.version>2.15.0</gson.version>
     <junit.version>5.13.4</junit.version>
-    <assertj.version>3.27.6</assertj.version>
+    <assertj.version>3.27.7</assertj.version>
   </properties>
 
   <dependencies>
@@ -94,7 +108,28 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.5.4</version>
+        <version>3.6.1</version>
+      </plugin>
+      <plugin>
+        <!-- SBOM: target/bom.json (CycloneDX) of what ships in the plugin jar; attested and published by release.yaml -->
+        <groupId>org.cyclonedx</groupId>
+        <artifactId>cyclonedx-maven-plugin</artifactId>
+        <version>2.9.3</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>makeBom</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <outputFormat>json</outputFormat>
+          <outputName>bom</outputName>
+          <!-- sonar-plugin-api is provided by the SonarQube server, not bundled -->
+          <includeProvidedScope>false</includeProvidedScope>
+          <includeTestScope>false</includeTestScope>
+        </configuration>
       </plugin>
       <plugin>
         <!-- Coverage: target/site/jacoco/jacoco.xml, imported by SonarQube via sonar.coverage.jacoco.xmlReportPaths -->

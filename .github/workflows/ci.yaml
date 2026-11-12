@@ -47,6 +47,10 @@ jobs:
         # runs coverage.py in a python container unless it is installed (system pip is externally managed on Ubuntu runners)
         run: scripts/test-tools.sh
 
+      - name: Vulnerability scan (osv-scanner)
+        # pinned, checksum-verified binary; fails the build on any known vulnerability in pom.xml dependencies
+        run: scripts/osv-scan.sh
+
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: plugin-jar

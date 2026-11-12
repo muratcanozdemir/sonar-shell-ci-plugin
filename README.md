@@ -76,11 +76,21 @@ How pipeline scripts are checked with ShellCheck:
 
 ## Installation
 
-1. Build the plugin (Java 17+; the Maven wrapper downloads Maven):
-   ```bash
-   ./mvnw package
-   ```
-2. Copy `target/sonar-shell-ci-plugin-<version>.jar` to `<sonarqube>/extensions/plugins/` and restart SonarQube.
+1. Download `sonar-shell-ci-plugin-<version>.jar` from a
+   [release](https://github.com/muratcanozdemir/sonar-shell-ci-plugin/releases), or build it (Java 17+; the Maven
+   wrapper downloads Maven): `./mvnw package`, which writes `target/sonar-shell-ci-plugin-<version>.jar`.
+2. Copy the JAR to `<sonarqube>/extensions/plugins/` and restart SonarQube.
+
+Each release also carries a CycloneDX SBOM of the JAR (`.cdx.json`), `SHA256SUMS`, and two signed in-toto
+attestations of the JAR as Sigstore bundles: SLSA build provenance and the SBOM. Verify a downloaded JAR with the
+GitHub CLI (online against the attestations API, or offline-capable with `--bundle <file>.sigstore.json`):
+
+```bash
+gh attestation verify sonar-shell-ci-plugin-<version>.jar --repo muratcanozdemir/sonar-shell-ci-plugin \
+  --signer-workflow muratcanozdemir/sonar-shell-ci-plugin/.github/workflows/release.yaml
+gh attestation verify sonar-shell-ci-plugin-<version>.jar --repo muratcanozdemir/sonar-shell-ci-plugin \
+  --predicate-type https://cyclonedx.org/bom
+```
 
 The **Shell & CI way** quality profiles for the *Shell* and *CI Pipelines* languages are created and set as default.
 
@@ -136,6 +146,7 @@ To analyze pipeline files with other names, add patterns, e.g.
 ```bash
 ./mvnw clean verify                # build, run the Java tests, write target/site/jacoco/jacoco.xml
 scripts/test-tools.sh              # Python tests of tools/ with coverage: target/python-coverage.xml
+scripts/osv-scan.sh                # known vulnerabilities (osv.dev) in the dependencies; fails on any
 
 # local SonarQube Community Build with the plugin mounted
 docker run -d --name sonarqube -p 9000:9000 \
@@ -182,6 +193,17 @@ git -C /tmp/scw checkout -q "$(git -C /tmp/scw rev-list -1 --before="$(git -C /t
 python3 tools/gen_shellcheck_rules.py /tmp/sc /tmp/scw src/main/resources/io/github/shellci/shell/shellcheck-rules.json
 ```
 
+### Releasing
+
+Push a tag `vX.Y.Z` (`vX.Y.Z-rc.1` makes a pre-release). `.github/workflows/release.yaml` sets the Maven version from
+the tag, builds and tests, scans the SBOM with osv-scanner, attests provenance and SBOM, verifies both attestations
+(signer workflow, tag, commit, GitHub-hosted runner), and creates the GitHub release with the JAR, SBOM, attestation
+bundles and checksums. The version in `pom.xml` stays a `-SNAPSHOT`.
+
+```bash
+git tag -a v0.1.0 -m v0.1.0 && git push origin v0.1.0
+```
+
 ### Layout
 
 ```
@@ -196,4 +218,4 @@ src/main/java/io/github/shellci/
 
 ## License
 
-Not chosen yet.
+[MIT](LICENSE)

@@ -1,0 +1,117 @@
+name: Release
+
+# Pushing a tag vX.Y.Z (or vX.Y.Z-rc.1, published as a pre-release) builds the plugin at that version and publishes a
+# GitHub release with:
+#   sonar-shell-ci-plugin-X.Y.Z.jar                     the plugin
+#   sonar-shell-ci-plugin-X.Y.Z.cdx.json                CycloneDX SBOM of the jar
+#   sonar-shell-ci-plugin-X.Y.Z.jar.provenance.sigstore.json   in-toto SLSA build provenance (Sigstore bundle)
+#   sonar-shell-ci-plugin-X.Y.Z.jar.sbom.sigstore.json         in-toto SBOM attestation (Sigstore bundle)
+#   SHA256SUMS
+# Both attestations are verified with `gh attestation verify` before the release is created.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions: {}
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write # create the release
+      id-token: write # Sigstore signing certificate for the attestations
+      attestations: write
+      artifact-metadata: write
+    env:
+      TAG: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-java@77dd5b2ce225ea11469928ac317850245a74ae78 # v6.2.0
+        with:
+          distribution: temurin
+          java-version: "21"
+          # no dependency cache: a release is built only from freshly resolved artifacts (no cache poisoning)
+
+      - name: Set version from tag
+        id: version
+        run: |
+          if [[ ! "$TAG" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)(-[0-9A-Za-z.]+)?$ ]]; then
+            echo "::error::tag $TAG is not vMAJOR.MINOR.PATCH[-prerelease]"
+            exit 1
+          fi
+          version="${TAG#v}"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          ./mvnw -B -ntp org.codehaus.mojo:versions-maven-plugin:2.25.1:set \
+            -DnewVersion="$version" -DgenerateBackupPoms=false
+
+      - name: Build and test
+        # also writes the CycloneDX SBOM target/bom.json (cyclonedx-maven-plugin, package phase)
+        run: ./mvnw -B -ntp verify
+
+      - name: Stage release assets
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          mkdir dist
+          cp "target/sonar-shell-ci-plugin-$VERSION.jar" dist/
+          cp target/bom.json "dist/sonar-shell-ci-plugin-$VERSION.cdx.json"
+
+      - name: Vulnerability scan of the SBOM (osv-scanner)
+        # what ships in the jar, as resolved by this build
+        run: scripts/osv-scan.sh -L "dist/sonar-shell-ci-plugin-${{ steps.version.outputs.version }}.cdx.json"
+
+      - name: Attest build provenance
+        id: provenance
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: dist/sonar-shell-ci-plugin-${{ steps.version.outputs.version }}.jar
+
+      - name: Attest SBOM
+        id: sbom
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: dist/sonar-shell-ci-plugin-${{ steps.version.outputs.version }}.jar
+          sbom-path: dist/sonar-shell-ci-plugin-${{ steps.version.outputs.version }}.cdx.json
+
+      - name: Verify attestations
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+          PROVENANCE_BUNDLE: ${{ steps.provenance.outputs.bundle-path }}
+          SBOM_BUNDLE: ${{ steps.sbom.outputs.bundle-path }}
+        run: |
+          jar="dist/sonar-shell-ci-plugin-$VERSION.jar"
+          cp "$PROVENANCE_BUNDLE" "$jar.provenance.sigstore.json"
+          cp "$SBOM_BUNDLE" "$jar.sbom.sigstore.json"
+          # signed by this workflow, from this tag, on a GitHub-hosted runner; checked both against the
+          # attestations API and against the bundles that are published with the release
+          common=(--repo "$GITHUB_REPOSITORY"
+                  --signer-workflow "$GITHUB_REPOSITORY/.github/workflows/release.yaml"
+                  --source-ref "$GITHUB_REF"
+                  --source-digest "$GITHUB_SHA"
+                  --deny-self-hosted-runners)
+          verify() { # predicate type, published bundle
+            gh attestation verify "$jar" "${common[@]}" --predicate-type "$1"
+            gh attestation verify "$jar" "${common[@]}" --predicate-type "$1" --bundle "$2"
+          }
+          verify https://slsa.dev/provenance/v1 "$jar.provenance.sigstore.json"
+          verify https://cyclonedx.org/bom "$jar.sbom.sigstore.json"
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          (cd dist && sha256sum -- * > SHA256SUMS)
+          prerelease=()
+          if [[ "$TAG" == *-* ]]; then prerelease=(--prerelease); fi
+          gh release create "$TAG" dist/* --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes \
+            --title "$TAG" "${prerelease[@]}"
