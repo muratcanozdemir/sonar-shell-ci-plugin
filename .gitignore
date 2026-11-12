@@ -1,0 +1,6 @@
+target/
+.idea/
+*.iml
+.sonarqube/
+.scannerwork/
+__pycache__/

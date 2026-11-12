@@ -1,0 +1,11 @@
+name: composite
+runs:
+  using: composite
+  steps:
+    - run: echo "no shell given"
+    - run: echo hi
+      shell: python
+    - run: echo hi
+      shell: /usr/bin/bash -e {0}
+    - run: echo hi
+      shell: /bin/sh

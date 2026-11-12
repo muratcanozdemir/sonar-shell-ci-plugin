@@ -1,0 +1,40 @@
+<h2>Why is this an issue?</h2>
+<p>Workflows triggered by <code>pull_request_target</code> or <code>workflow_run</code> run in the context of the base repository: they get repository secrets and a <code>GITHUB_TOKEN</code> that can write. That is safe only as long as they never execute code from the pull request.</p>
+<p>Checking out the pull request head (<code>ref: ${{ github.event.pull_request.head.sha }}</code>, <code>gh pr checkout</code>, fetching <code>refs/pull/*</code>…) and then building, testing or installing dependencies runs the author's code (build scripts, package hooks, test files, Makefiles) with those privileges. This attack is known as a "pwn request".</p>
+<h2>How to fix it</h2>
+<ul>
+  <li>Use the unprivileged <code>pull_request</code> trigger for anything that builds or tests pull request code.</li>
+  <li>If privileged follow-up work is needed (labelling, commenting), split it into a separate <code>workflow_run</code> workflow that only consumes artifacts as data, never executes them.</li>
+  <li>If you must check out the PR in a privileged workflow, do not run anything from it and set <code>permissions</code> to read-only.</li>
+</ul>
+<h3>Noncompliant code example</h3>
+<pre>
+on: pull_request_target
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}  # Noncompliant
+      - run: npm ci &amp;&amp; npm test
+</pre>
+<h3>Compliant solution</h3>
+<pre>
+on: pull_request
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - run: npm ci &amp;&amp; npm test
+</pre>
+<h2>Resources</h2>
+<ul>
+  <li><a href="https://securitylab.github.com/resources/github-actions-preventing-pwn-requests/">GitHub Security Lab - Preventing pwn requests</a></li>
+  <li><a href="https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#pull_request_target">GitHub Docs - pull_request_target</a></li>
+  <li>CWE-829 - Inclusion of Functionality from Untrusted Control Sphere</li>
+  <li>CWE-94 - Improper Control of Generation of Code ('Code Injection')</li>
+</ul>

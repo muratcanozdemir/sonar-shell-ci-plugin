@@ -1,0 +1,8 @@
+name: composite
+description: test
+runs:
+  using: composite
+  steps:
+    - uses: other/action@v1
+    - run: echo "${{ github.event.comment.body }}"
+      shell: bash

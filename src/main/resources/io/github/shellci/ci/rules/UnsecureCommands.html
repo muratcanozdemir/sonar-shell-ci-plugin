@@ -1,0 +1,23 @@
+<h2>Why is this an issue?</h2>
+<p>The <code>set-env</code> and <code>add-path</code> workflow commands were disabled in 2020 because any process that can print to the job log, for example a test printing an issue title or a dependency's install script, could use them to set <code>LD_PRELOAD</code>, <code>NODE_OPTIONS</code> or <code>PATH</code> for later steps and take over the job. Setting <code>ACTIONS_ALLOW_UNSECURE_COMMANDS: true</code> turns them back on.</p>
+<h2>How to fix it</h2>
+<p>Remove the variable and write to the <code>$GITHUB_ENV</code> and <code>$GITHUB_PATH</code> files instead.</p>
+<h3>Noncompliant code example</h3>
+<pre>
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true  # Noncompliant
+steps:
+  - run: echo "::set-env name=TOOL_HOME::/opt/tool"
+</pre>
+<h3>Compliant solution</h3>
+<pre>
+steps:
+  - run: echo "TOOL_HOME=/opt/tool" &gt;&gt; "$GITHUB_ENV"
+</pre>
+<h2>Resources</h2>
+<ul>
+  <li><a href="https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/">GitHub Changelog - Deprecating set-env and add-path commands</a></li>
+  <li><a href="https://github.com/advisories/GHSA-mfwh-5m23-j46w">GHSA-mfwh-5m23-j46w</a></li>
+  <li>CWE-77 - Improper Neutralization of Special Elements used in a Command ('Command Injection')</li>
+  <li>CWE-94 - Improper Control of Generation of Code ('Code Injection')</li>
+</ul>

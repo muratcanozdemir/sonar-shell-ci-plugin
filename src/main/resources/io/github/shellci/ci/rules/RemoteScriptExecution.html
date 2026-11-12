@@ -1,0 +1,29 @@
+<p>Piping a downloaded script straight into a shell (<code>curl ... | bash</code>, <code>bash &lt;(curl ...)</code>, PowerShell <code>iwr ... | iex</code>) runs whatever the server returns at that moment, with the job's credentials. A compromised host, DNS, CDN or release page, or a truncated download, executes in your pipeline without any check.</p>
+<h2>Ask Yourself Whether</h2>
+<ul>
+  <li>The URL is outside your control, or not pinned to a fixed version.</li>
+  <li>The job has access to secrets, deploy credentials or publishes artifacts.</li>
+</ul>
+<p>There is a risk if you answered yes to any of those questions.</p>
+<h2>Recommended Secure Coding Practices</h2>
+<ul>
+  <li>Prefer a package manager, a pinned container image or a pinned action that provides the tool.</li>
+  <li>Otherwise download a fixed version to a file, verify its checksum or signature, then run it.</li>
+</ul>
+<h2>Sensitive Code Example</h2>
+<pre>
+script:
+  - curl -fsSL https://get.example.com/install.sh | bash  # Sensitive
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+script:
+  - curl -fsSLo install.sh https://get.example.com/v1.4.2/install.sh
+  - echo "3f5e7a...c2d1  install.sh" | sha256sum -c -
+  - bash install.sh
+</pre>
+<h2>See</h2>
+<ul>
+  <li>CWE-494 - Download of Code Without Integrity Check</li>
+  <li>CWE-829 - Inclusion of Functionality from Untrusted Control Sphere</li>
+</ul>

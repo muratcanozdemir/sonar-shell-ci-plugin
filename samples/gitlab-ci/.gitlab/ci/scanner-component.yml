@@ -1,0 +1,10 @@
+spec:
+  inputs:
+    stage:
+      default: test
+---
+scan:
+  stage: $[[ inputs.stage ]]
+  image: registry.example.com:5000/tools/scanner
+  script:
+    - echo "scan"

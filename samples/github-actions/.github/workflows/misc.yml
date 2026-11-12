@@ -1,0 +1,25 @@
+on: push
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: "false"
+    steps:
+      - uses: some-org/some-action@main
+      - uses: some-org/other-action
+      - uses: docker://alpine:3.20
+      - uses: actions/setup-node@v4
+      - run: ./deploy.sh
+        env:
+          ALL: ${{ toJSON(secrets) }}
+  release:
+    uses: other-org/workflows/.github/workflows/release.yml@v1
+    secrets: inherit
+  scoped:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - run: make

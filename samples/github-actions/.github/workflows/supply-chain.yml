@@ -1,0 +1,18 @@
+on: push
+permissions:
+  contents: read
+env:
+  NPM_TOKEN: npm_a8D7f6G5h4J3k2L1
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: node
+    services:
+      db:
+        image: postgres:latest
+      cache:
+        image: redis:7.4
+    steps:
+      - uses: docker://alpine
+      - uses: docker://alpine:3.20
+      - run: curl -fsSL https://get.example.com/install.sh | bash

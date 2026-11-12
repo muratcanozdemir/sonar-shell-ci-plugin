@@ -1,0 +1,29 @@
+include:
+  remote: http://example.com/ci.yml
+image:
+  name: busybox
+default:
+  after_script:
+    - echo done
+before_script: echo global
+variables:
+  SECRET_FLAG: "true"
+  ACCESS_KEY: "12345678"
+  PRIVATE_KEY_PATH: ./keys/id_rsa
+  CREDENTIALS: /etc/creds
+  API_SECRET: short
+  NESTED:
+    description: no value here
+job:
+  services:
+    - name: $REGISTRY/db
+  script: !reference [.setup, script]
+  after_script:
+    - !reference [.cleanup, after_script]
+    - echo after
+.setup:
+  script:
+    - echo setup
+empty-job: {}
+component-job:
+  stage: test

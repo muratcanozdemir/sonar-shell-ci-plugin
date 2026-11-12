@@ -1,0 +1,22 @@
+name: triage
+on:
+  issues:
+  pull_request_target:
+permissions:
+  contents: read
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Title ${{ github.event.issue.title }}"
+      - run: |
+          echo "ok ${{ github.sha }}"
+          echo "${{ github.event.pull_request.body }}" > body.txt
+      - env:
+          TITLE: ${{ github.event.issue.title }}
+        run: echo "$TITLE"
+      - uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
+        with:
+          script: |
+            console.log("${{ github.head_ref }}")
+      - run: echo '${{ toJSON(github.event) }}'

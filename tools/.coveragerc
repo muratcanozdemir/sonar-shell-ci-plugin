@@ -1,0 +1,9 @@
+[run]
+branch = True
+relative_files = True
+source = tools
+omit = tools/tests/*
+data_file = target/.python-coverage
+
+[xml]
+output = target/python-coverage.xml

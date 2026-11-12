@@ -1,0 +1,58 @@
+include:
+  - local: /ci/build.yml
+  - remote: https://example.com/ci/shared.yml
+  - project: other-group/ci-templates
+    file: /deploy.yml
+  - project: other-group/ci-templates
+    ref: main
+    file: /lint.yml
+  - project: other-group/ci-templates
+    ref: 3f2a7c9e1b4d5f6a7b8c9d0e1f2a3b4c5d6e7f80
+    file: /pinned.yml
+  - component: $CI_SERVER_FQDN/acme/security/scan@1.2.0
+  - component: $CI_SERVER_FQDN/acme/security/sast@8c1f5e0d2b9a4c3e7f6d5b4a3c2e1f0d9b8a7c6e
+  - template: Jobs/SAST.gitlab-ci.yml
+  - https://example.com/ci/legacy.yml
+
+variables:
+  DEPLOY_TOKEN: "glpat-8s7dF6g5H4j3K2l1"
+  TOKEN_URL: https://example.com/token
+  DB_PASSWORD:
+    value: "s3cr3t-Passw0rd"
+    description: database password
+  API_KEY: $VAULT_API_KEY
+
+default:
+  image: python
+  before_script:
+    - pip install -r requirements.txt
+
+stages: [build, test, deploy]
+
+build:
+  stage: build
+  image: node:22
+  services:
+    - postgres:latest
+    - name: redis:7.4@sha256:4bcff63911fcb4448bd4fdacec207030997caf25e9bea4045fa6c8c44de311d1
+  before_script:
+    - OUT_DIR=dist
+  script:
+    - npm ci
+    - cd $OUT_DIR
+    - |
+      for f in $(ls *.js); do
+        echo "$f"
+      done
+  after_script:
+    - curl -fsSL https://get.example.com/install.sh | sh
+
+test:alpine:
+  image: alpine:3.20
+  script:
+    - if [[ -f x ]]; then echo y; fi
+
+.deploy-template:
+  script:
+    - echo "deploying $[[ inputs.environment ]]"
+    - bash <(curl -s https://example.com/deploy.sh)

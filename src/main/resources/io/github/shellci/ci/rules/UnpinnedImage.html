@@ -1,0 +1,32 @@
+<p>Job, service and step containers (GitHub Actions <code>uses: docker://...</code>) referenced without a tag, or with <code>latest</code>, change whenever the image is republished. The pipeline then runs code nobody reviewed, builds are not reproducible, and a compromised or typo-squatted image reaches every job at once. Version tags are also mutable; only a digest (<code>@sha256:...</code>) guarantees the exact image.</p>
+<h2>Ask Yourself Whether</h2>
+<ul>
+  <li>The image comes from a public registry or a publisher you do not control.</li>
+  <li>The job has access to secrets, deploy credentials or publishes artifacts.</li>
+</ul>
+<p>There is a risk if you answered yes to any of those questions.</p>
+<h2>Recommended Secure Coding Practices</h2>
+<ul>
+  <li>Pin images to a digest and let Dependabot or Renovate update it. Keep the tag for readability: <code>node:22.11@sha256:...</code>.</li>
+  <li>At least pin an explicit version tag, never rely on <code>latest</code>.</li>
+</ul>
+<p>By default the rule reports untagged and <code>latest</code> images only. Set the <code>requireDigest</code> parameter to also report version tags.</p>
+<h2>Sensitive Code Example</h2>
+<pre>
+# GitLab CI
+image: python          # Sensitive
+services:
+  - postgres:latest    # Sensitive
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+image: python:3.13@sha256:8f0ad0e2b7d7d5c6ef3f1c5c7e2b0ab6a0d3c1f9e4b8a7c6d5e4f3a2b1c0d9e8
+services:
+  - postgres:17.2
+</pre>
+<h2>See</h2>
+<ul>
+  <li><a href="https://docs.docker.com/reference/cli/docker/image/pull/#pull-an-image-by-digest-immutable-identifier">Docker Docs - Pull an image by digest</a></li>
+  <li>CWE-494 - Download of Code Without Integrity Check</li>
+  <li>CWE-829 - Inclusion of Functionality from Untrusted Control Sphere</li>
+</ul>

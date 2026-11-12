@@ -1,0 +1,44 @@
+<p>Pipelines often run code from elsewhere: GitHub actions and reusable workflows, GitLab <code>include:</code> files from other projects or URLs, and GitLab CI/CD components. Tags and branches such as <code>@v4</code>, <code>@main</code> or <code>ref: main</code> are mutable: the owner of the action, or anyone who compromises their account, can point them at new code. That code then runs in your workflow with your secrets and token. In March 2025 the compromise of <code>tj-actions/changed-files</code> retagged every release to a version that dumped CI secrets into public logs.</p>
+<h2>Ask Yourself Whether</h2>
+<ul>
+  <li>The action is maintained by a third party you do not control.</li>
+  <li>The job has access to secrets, a write token, deployment credentials or publishes artifacts.</li>
+</ul>
+<p>There is a risk if you answered yes to any of those questions.</p>
+<h2>Recommended Secure Coding Practices</h2>
+<ul>
+  <li>Reference actions and reusable workflows by full-length commit SHA, with the version in a comment for readability.</li>
+  <li>In GitLab, set <code>ref:</code> of project includes and the <code>@version</code> of components to a full-length commit SHA. Do not use <code>include: remote</code>; mirror the file into a project you control and include it by commit.</li>
+  <li>Use Dependabot or Renovate to keep the pinned SHAs up to date.</li>
+  <li>Owners you fully trust (for example your own organization) can be listed in the <code>trustedOwners</code> parameter.</li>
+</ul>
+<h2>Sensitive Code Example</h2>
+<pre>
+- uses: some-org/some-action@v2  # Sensitive
+</pre>
+<pre>
+# GitLab CI
+include:
+  - remote: https://example.com/ci/build.yml        # Sensitive
+  - project: other-group/ci-templates               # Sensitive: default branch
+    file: /build.yml
+  - component: $CI_SERVER_FQDN/acme/lint/check@main # Sensitive
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+- uses: some-org/some-action@8f4b7f84864484a7bf31766abe9204da3cbe65b3  # v2.1.0
+</pre>
+<pre>
+include:
+  - project: other-group/ci-templates
+    ref: 3f2a7c9e1b4d5f6a7b8c9d0e1f2a3b4c5d6e7f80  # v2.3.0
+    file: /build.yml
+  - component: $CI_SERVER_FQDN/acme/lint/check@8c1f5e0d2b9a4c3e7f6d5b4a3c2e1f0d9b8a7c6e  # 1.4.0
+</pre>
+<h2>See</h2>
+<ul>
+  <li><a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions#using-third-party-actions">GitHub Docs - Using third-party actions</a></li>
+  <li><a href="https://docs.gitlab.com/ci/yaml/includes/">GitLab Docs - Use CI/CD configuration from other files</a></li>
+  <li>CWE-829 - Inclusion of Functionality from Untrusted Control Sphere</li>
+  <li>CWE-494 - Download of Code Without Integrity Check</li>
+</ul>

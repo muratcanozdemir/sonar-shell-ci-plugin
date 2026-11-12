@@ -1,0 +1,34 @@
+jobs:
+  - job: NoPool
+    steps:
+      - script: echo default pool
+      - powershell: Write-Host hi
+      - task: CmdLine@2
+        inputs:
+          script: cd /tmp
+      - task: PowerShell@2
+        inputs:
+          script: Write-Host "$(Build.RequestedFor)"
+      - task: AzureCLI@2
+        inputs:
+          scriptType: pscore
+          inlineScript: az --version
+      - task: Docker@2
+        inputs:
+          command: build
+      - task: bash
+        inputs:
+          script: echo no version
+      - checkout: self
+        persistCredentials: false
+  - job: Vs
+    pool:
+      vmImage: vs2017-win2016
+    container:
+      image: mcr.microsoft.com/powershell
+    steps:
+      - task: CmdLine@2
+        inputs:
+          script: dir
+  - job: Steps
+    steps: notalist

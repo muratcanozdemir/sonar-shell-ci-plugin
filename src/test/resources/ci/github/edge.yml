@@ -1,0 +1,31 @@
+on: workflow_dispatch
+jobs:
+  containers:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    container: node
+    services:
+      db: postgres:latest
+      cache:
+        image: redis:7.4
+      dyn:
+        image: ${{ matrix.image }}
+    steps:
+      - uses: ${{ matrix.action }}
+      - uses: [not, a, scalar]
+      - run: [not, a, scalar]
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - run: "echo \"quoted\" && cd /x"
+      - run: >
+          folded text
+  job-perms:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    secrets: inherit
+    steps:
+      - run: echo ok
+  reusable:
+    uses: org/repo/.github/workflows/w.yml@3f2a7c9e1b4d5f6a7b8c9d0e1f2a3b4c5d6e7f80
+    secrets:
+      token: ${{ secrets.TOKEN }}

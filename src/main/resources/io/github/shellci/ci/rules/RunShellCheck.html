@@ -1,0 +1,24 @@
+<h2>Why is this an issue?</h2>
+<p>Pipeline steps (GitHub Actions <code>run:</code>, GitLab CI <code>script:</code>/<code>before_script:</code>/<code>after_script:</code>, Azure Pipelines <code>script:</code>/<code>bash:</code>/<code>Bash@3</code>/<code>CmdLine@2</code>/<code>AzureCLI@2</code>) are shell scripts and fail in the same ways as any other script: unquoted variables split and glob, <code>cd</code> failures go unnoticed, pipelines hide errors. Because they run in CI, these bugs usually surface as flaky or silently wrong builds and releases.</p>
+<p>This rule runs <a href="https://www.shellcheck.net">ShellCheck</a> on every script executed by <code>bash</code> or <code>sh</code> and reports its findings at the corresponding place in the pipeline file. Template expressions (<code>${{ }}</code>, <code>$[ ]</code>, Azure <code>$(macros)</code>, GitLab <code>$[[ inputs ]]</code>) are treated as plain words. GitLab jobs whose image is Alpine or BusyBox are checked as POSIX <code>sh</code>, others as <code>bash</code>; a job's <code>before_script</code> and <code>script</code> are checked together as one session. ShellCheck must be installed where the analysis runs.</p>
+<p>The <code>minimumLevel</code> parameter selects the lowest ShellCheck level reported, and <code>excludedCodes</code> lists checks to ignore. Each finding's message starts with its ShellCheck code; see the ShellCheck wiki page for that code for details.</p>
+<h2>How to fix it</h2>
+<p>Fix the script as explained by the ShellCheck finding, or add <code># shellcheck disable=SCxxxx</code> inside the script before the offending line.</p>
+<h3>Noncompliant code example</h3>
+<pre>
+- run: |
+    cd $BUILD_DIR      # SC2164: Use 'cd ... || exit' in case cd fails
+    rm -rf $OUT/*      # SC2115: Use "${var:?}" to ensure this never expands to /*
+</pre>
+<h3>Compliant solution</h3>
+<pre>
+- run: |
+    cd "$BUILD_DIR" || exit 1
+    rm -rf "${OUT:?}"/*
+</pre>
+<h2>Resources</h2>
+<ul>
+  <li><a href="https://www.shellcheck.net/wiki/">ShellCheck wiki</a></li>
+  <li><a href="https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell">GitHub Docs - jobs.&lt;job_id&gt;.steps[*].shell</a></li>
+  <li><a href="https://docs.gitlab.com/ci/yaml/script/">GitLab Docs - Scripts and job logs</a></li>
+</ul>

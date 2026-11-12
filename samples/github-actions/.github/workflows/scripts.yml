@@ -1,0 +1,31 @@
+on: push
+permissions: {}
+defaults:
+  run:
+    shell: bash
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - run: cd $HOME/build
+      - name: block
+        run: |
+          echo "start"
+            cd /tmp
+          echo "${{ github.sha }}" > out
+          ls `pwd`
+      - run: "cd /quoted"
+      - run: >
+          cd /folded
+      - shell: pwsh
+        run: cd $HOME
+      - shell: sh
+        run: |
+          if [[ -f x ]]; then echo y; fi
+  win:
+    runs-on: [self-hosted, windows]
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - run: cd $HOME

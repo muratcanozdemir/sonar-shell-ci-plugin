@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.github.shellci</groupId>
+  <artifactId>sonar-shell-ci-plugin</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+  <packaging>sonar-plugin</packaging>
+
+  <name>Shell &amp; CI plugin for SonarQube</name>
+  <description>Analysis of shell scripts (ShellCheck) and CI pipelines (GitHub Actions, GitLab CI, Azure Pipelines) for SonarQube</description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>17</maven.compiler.release>
+    <sonar.api.version>14.1.0.5543</sonar.api.version>
+    <snakeyaml.version>3.2</snakeyaml.version>
+    <gson.version>2.13.2</gson.version>
+    <junit.version>5.13.4</junit.version>
+    <assertj.version>3.27.6</assertj.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.sonarsource.api.plugin</groupId>
+      <artifactId>sonar-plugin-api</artifactId>
+      <version>${sonar.api.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.snakeyaml</groupId>
+      <artifactId>snakeyaml-engine</artifactId>
+      <version>${snakeyaml.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>${gson.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.sonarsource.api.plugin</groupId>
+      <artifactId>sonar-plugin-api-test-fixtures</artifactId>
+      <version>${sonar.api.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <!-- MapSettings, PluginContextImpl, SonarRuntimeImpl, matching the targeted Community Build 26.11 -->
+      <groupId>org.sonarsource.sonarqube</groupId>
+      <artifactId>sonar-plugin-api-impl</artifactId>
+      <version>26.11.0.134175</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <!-- SensorContextTester, TestInputFileBuilder: version of the scanner engine shipped with Community Build 26.11 -->
+      <groupId>org.sonarsource.scanner.engine</groupId>
+      <artifactId>sensor-test-fixtures</artifactId>
+      <version>13.16.0.6705</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
+        <artifactId>sonar-packaging-maven-plugin</artifactId>
+        <version>2.0.0.3035</version>
+        <extensions>true</extensions>
+        <configuration>
+          <pluginKey>shellci</pluginKey>
+          <pluginClass>io.github.shellci.ShellCiPlugin</pluginClass>
+          <pluginName>Shell &amp; CI plugin for SonarQube</pluginName>
+          <pluginApiMinVersion>${sonar.api.version}</pluginApiMinVersion>
+          <!-- No requiredForLanguages: pipeline files are indexed as YAML (or with no language), so the plugin must
+               always be loaded, not only for projects containing shell scripts. -->
+          <jreMinVersion>17</jreMinVersion>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.4</version>
+      </plugin>
+      <plugin>
+        <!-- Coverage: target/site/jacoco/jacoco.xml, imported by SonarQube via sonar.coverage.jacoco.xmlReportPaths -->
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.16</version>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

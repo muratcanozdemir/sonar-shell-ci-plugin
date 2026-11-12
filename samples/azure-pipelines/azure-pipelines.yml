@@ -1,0 +1,52 @@
+trigger:
+  - main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - name: SONAR_TOKEN
+    value: sqa_1234567890abcdef
+  - name: BUILD_CONFIGURATION
+    value: Release
+  - group: shared-secrets
+
+resources:
+  containers:
+    - container: builder
+      image: mcr.microsoft.com/dotnet/sdk
+  repositories:
+    - repository: templates
+      type: github
+      name: org/templates
+
+stages:
+  - stage: Build
+    jobs:
+      - job: Linux
+        container: builder
+        steps:
+          - checkout: self
+            persistCredentials: true
+          - script: echo "Commit $(Build.SourceVersionMessage)"
+          - bash: |
+              cd $(Build.SourcesDirectory)
+              echo "branch ${{ variables['Build.SourceBranch'] }}"
+              cd $BUILD_DIR
+          - task: Bash@3
+            inputs:
+              targetType: inline
+              script: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+          - pwsh: Write-Host "$(System.PullRequest.SourceBranch)"
+          - task: AzureCLI@2
+            inputs:
+              scriptType: bash
+              inlineScript: |
+                echo $1
+      - job: Windows
+        pool:
+          vmImage: windows-latest
+        container: mcr.microsoft.com/windows/servercore:ltsc2022
+        steps:
+          - script: cd %TEMP%
+          - bash: cd $HOME

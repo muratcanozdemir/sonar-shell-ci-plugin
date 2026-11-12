@@ -1,0 +1,15 @@
+on:
+  pull_request_target:
+    types: [opened]
+permissions: write-all
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/checkout@v4
+      - run: gh pr checkout ${{ github.event.number }}
+      - run: npm test

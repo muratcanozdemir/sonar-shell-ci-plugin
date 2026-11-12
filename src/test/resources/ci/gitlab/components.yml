@@ -1,0 +1,5 @@
+include:
+  - component: gitlab.com/acme/lint/check
+  - component: $CI_SERVER_FQDN/acme/lint/check@$[[ inputs.version ]]
+  - project: other-group/ci
+    ref: [not, scalar]

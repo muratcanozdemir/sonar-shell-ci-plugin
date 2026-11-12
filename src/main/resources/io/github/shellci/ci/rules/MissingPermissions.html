@@ -1,0 +1,35 @@
+<p>When neither the workflow nor the job declares <code>permissions</code>, the <code>GITHUB_TOKEN</code> receives the default permissions configured for the repository or organization. For many repositories, especially older ones, the default is read <em>and write</em> on every scope. The workflow's actual privileges then depend on a setting that is invisible in the code and can change at any time.</p>
+<h2>Ask Yourself Whether</h2>
+<ul>
+  <li>The repository or organization default token permission is "Read and write".</li>
+  <li>The job runs third-party actions, installs dependencies or processes untrusted input.</li>
+</ul>
+<p>There is a risk if you answered yes to any of those questions.</p>
+<h2>Recommended Secure Coding Practices</h2>
+<p>Declare a restrictive <code>permissions</code> block at the top of the workflow (for example <code>contents: read</code>) and widen it per job only where needed.</p>
+<h2>Sensitive Code Example</h2>
+<pre>
+on: push
+jobs:
+  build:  # Sensitive
+    runs-on: ubuntu-latest
+    steps:
+      - run: make
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+on: push
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: make
+</pre>
+<h2>See</h2>
+<ul>
+  <li><a href="https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/controlling-permissions-for-github_token">GitHub Docs - Controlling permissions for GITHUB_TOKEN</a></li>
+  <li>CWE-250 - Execution with Unnecessary Privileges</li>
+  <li>CWE-732 - Incorrect Permission Assignment for Critical Resource</li>
+</ul>
