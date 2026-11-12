@@ -7,6 +7,8 @@ name: Release
 #   sonar-shell-ci-plugin-X.Y.Z.jar.provenance.sigstore.json   in-toto SLSA build provenance (Sigstore bundle)
 #   sonar-shell-ci-plugin-X.Y.Z.jar.sbom.sigstore.json         in-toto SBOM attestation (Sigstore bundle)
 #   SHA256SUMS
+# If the release already exists (e.g. created in the GitHub UI), the assets are attached to it instead; existing
+# assets are never replaced.
 # Both attestations are verified with `gh attestation verify` before the release is created.
 
 on:
@@ -106,12 +108,19 @@ jobs:
           verify https://slsa.dev/provenance/v1 "$jar.provenance.sigstore.json"
           verify https://cyclonedx.org/bom "$jar.sbom.sigstore.json"
 
-      - name: Create release
+      - name: Publish release
+        # Creates the release, or attaches the assets to an existing one (e.g. drafted in the GitHub UI, which also
+        # pushes the tag), keeping its title and notes. Never replaces an asset: upload fails if one already exists.
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           (cd dist && sha256sum -- * > SHA256SUMS)
-          prerelease=()
-          if [[ "$TAG" == *-* ]]; then prerelease=(--prerelease); fi
-          gh release create "$TAG" dist/* --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes \
-            --title "$TAG" "${prerelease[@]}"
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $TAG exists: attaching assets"
+            gh release upload "$TAG" dist/* --repo "$GITHUB_REPOSITORY"
+          else
+            prerelease=()
+            if [[ "$TAG" == *-* ]]; then prerelease=(--prerelease); fi
+            gh release create "$TAG" dist/* --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes \
+              --title "$TAG" "${prerelease[@]}"
+          fi

@@ -57,7 +57,7 @@ class CiRuleTest {
   /** README "CI pipelines" table: one row per rule with its type, platforms and default activation. */
   @Test
   void readme_rule_table_matches_the_metadata() throws IOException {
-    Pattern row = Pattern.compile("^\\| (.*\\(`(\\w+)`(, off by default)?\\)) \\| ([\\w ]+) \\|(.*)\\|$", Pattern.MULTILINE);
+    Pattern row = Pattern.compile("^\\| ((?:[^\\\\|\\n]|\\\\.)*\\(`(\\w+)`(, off by default)?\\)) \\| ([\\w ]+) \\|([^\\n]*)\\|$", Pattern.MULTILINE);
     Map<String, MatchResult> rows = new HashMap<>();
     row.matcher(Files.readString(Path.of("README.md"))).results().forEach(r -> rows.put(r.group(2), r));
     assertThat(rows.keySet()).containsExactlyInAnyOrderElementsOf(Arrays.stream(CiRule.values()).map(CiRule::key).toList());

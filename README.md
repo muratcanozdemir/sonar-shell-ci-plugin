@@ -198,7 +198,9 @@ python3 tools/gen_shellcheck_rules.py /tmp/sc /tmp/scw src/main/resources/io/git
 Push a tag `vX.Y.Z` (`vX.Y.Z-rc.1` makes a pre-release). `.github/workflows/release.yaml` sets the Maven version from
 the tag, builds and tests, scans the SBOM with osv-scanner, attests provenance and SBOM, verifies both attestations
 (signer workflow, tag, commit, GitHub-hosted runner), and creates the GitHub release with the JAR, SBOM, attestation
-bundles and checksums. The version in `pom.xml` stays a `-SNAPSHOT`.
+bundles and checksums. A release created beforehand (e.g. in the GitHub UI, which also pushes the tag) keeps
+its title and notes and gets the assets attached; assets already on it are never replaced. The version in `pom.xml`
+stays a `-SNAPSHOT`.
 
 ```bash
 git tag -a v0.1.0 -m v0.1.0 && git push origin v0.1.0
