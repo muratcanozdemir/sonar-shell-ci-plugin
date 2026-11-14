@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "include-component-in-tag": false,
+  "packages": {
+    ".": {
+      "release-type": "maven",
+      "skip-snapshot": true,
+      "extra-files": [
+        { "type": "generic", "path": "sonar-project.properties" }
+      ]
+    }
+  }
+}

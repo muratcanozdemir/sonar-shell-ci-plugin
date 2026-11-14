@@ -182,8 +182,8 @@ the plugin JAR. Tests that need ShellCheck are skipped when it is not installed.
   hotspots, reliability rating worse than A.
 
 To refresh the ShellCheck rules after a ShellCheck release, generate them from the release tag and the wiki as it was
-at that release (a newer wiki documents checks the release does not have yet), then bump `SHELLCHECK_VERSION` in
-`docker/scanner.Dockerfile` and `.github/workflows/ci.yaml`:
+at that release (a newer wiki documents checks the release does not have yet), then bump `SHELLCHECK_VERSION` and its checksum
+in `docker/scanner.Dockerfile`, `.github/workflows/ci.yaml` and `.github/workflows/release.yaml`:
 
 ```bash
 version=v0.11.0
@@ -195,16 +195,26 @@ python3 tools/gen_shellcheck_rules.py /tmp/sc /tmp/scw src/main/resources/io/git
 
 ### Releasing
 
-Push a tag `vX.Y.Z` (`vX.Y.Z-rc.1` makes a pre-release). `.github/workflows/release.yaml` sets the Maven version from
-the tag, builds and tests, scans the SBOM with osv-scanner, attests provenance and SBOM, verifies both attestations
-(signer workflow, tag, commit, GitHub-hosted runner), and creates the GitHub release with the JAR, SBOM, attestation
-bundles and checksums. A release created beforehand (e.g. in the GitHub UI, which also pushes the tag) keeps
-its title and notes and gets the assets attached; assets already on it are never replaced. The version in `pom.xml`
-stays a `-SNAPSHOT`.
+Versions and the changelog are automatic. Commits on `main` follow
+[Conventional Commits](https://www.conventionalcommits.org): `fix:` makes a patch release, `feat:` a minor one, and
+`feat!:` or a `BREAKING CHANGE:` footer a major one. Other types (`docs:`, `test:`, `build:`, `ci:`, `chore:`,
+`refactor:`) do not release anything by themselves.
 
-```bash
-git tag -a v0.1.0 -m v0.1.0 && git push origin v0.1.0
-```
+On every push to `main`, `.github/workflows/release.yaml` runs
+[release-please](https://github.com/googleapis/release-please), which keeps a release pull request up to date: it
+bumps the version in `pom.xml`, `sonar-project.properties` and `.release-please-manifest.json` and writes
+`CHANGELOG.md`. **Merging that pull request is the release:** it tags `vX.Y.Z` and creates the GitHub release with the
+changelog as notes. The same workflow then builds and tests that commit, scans the SBOM with osv-scanner, attests
+provenance and SBOM, verifies both attestations (signer workflow, branch, commit, GitHub-hosted runner), and attaches
+the JAR, SBOM, attestation bundles and checksums to the release.
+
+Between releases, `pom.xml` carries the version of the last release, so a JAR built locally from `main` has that
+version but is not that release: only JARs from the releases page are, and only those verify with
+`gh attestation verify`.
+
+release-please needs the repository setting *Actions → General → Allow GitHub Actions to create and approve pull
+requests*. CI does not run on pull requests opened with the workflow token; close and reopen the release pull request
+to run it.
 
 ### Layout
 

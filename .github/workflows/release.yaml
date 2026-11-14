@@ -1,37 +1,60 @@
 name: Release
 
-# Pushing a tag vX.Y.Z (or vX.Y.Z-rc.1, published as a pre-release) builds the plugin at that version and publishes a
-# GitHub release with:
+# release-please keeps a release pull request open on main: it bumps the version (pom.xml, sonar-project.properties,
+# .release-please-manifest.json) and writes CHANGELOG.md from the Conventional Commits since the last release.
+# Merging that pull request tags vX.Y.Z and creates the GitHub release with those notes; the release job then builds
+# the plugin at that commit and attaches:
 #   sonar-shell-ci-plugin-X.Y.Z.jar                     the plugin
 #   sonar-shell-ci-plugin-X.Y.Z.cdx.json                CycloneDX SBOM of the jar
 #   sonar-shell-ci-plugin-X.Y.Z.jar.provenance.sigstore.json   in-toto SLSA build provenance (Sigstore bundle)
 #   sonar-shell-ci-plugin-X.Y.Z.jar.sbom.sigstore.json         in-toto SBOM attestation (Sigstore bundle)
 #   SHA256SUMS
-# If the release already exists (e.g. created in the GitHub UI), the assets are attached to it instead; existing
-# assets are never replaced.
-# Both attestations are verified with `gh attestation verify` before the release is created.
+# Existing assets are never replaced. Both attestations are verified with `gh attestation verify` before upload.
+# Both jobs live in this file so that it stays the signer workflow of the attestations (tags created with the
+# workflow token do not trigger other workflows).
 
 on:
   push:
-    tags: ["v*"]
+    branches: [main]
 
 permissions: {}
 
 concurrency:
-  group: release-${{ github.ref }}
+  group: release
   cancel-in-progress: false
 
 jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write # tag and GitHub release, release branch
+      pull-requests: write # the release pull request
+      issues: write # its labels
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+      version: ${{ steps.release.outputs.version }}
+    steps:
+      - id: release
+        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
   release:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
-      contents: write # create the release
+      contents: write # attach the assets to the release
       id-token: write # Sigstore signing certificate for the attestations
       attestations: write
       artifact-metadata: write
     env:
-      TAG: ${{ github.ref_name }}
+      TAG: ${{ needs.release-please.outputs.tag_name }}
+      VERSION: ${{ needs.release-please.outputs.version }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -43,25 +66,40 @@ jobs:
           java-version: "21"
           # no dependency cache: a release is built only from freshly resolved artifacts (no cache poisoning)
 
-      - name: Set version from tag
-        id: version
+      - name: Install ShellCheck
+        # same release as ci.yaml, docker/scanner.Dockerfile and the generated rules, so no ShellCheck test is skipped
+        env:
+          SHELLCHECK_VERSION: v0.11.0
+          SHELLCHECK_SHA256: b7af85e41cc99489dcc21d66c6d5f3685138f06d34651e6d34b42ec6d54fe6f6
         run: |
-          if [[ ! "$TAG" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)(-[0-9A-Za-z.]+)?$ ]]; then
-            echo "::error::tag $TAG is not vMAJOR.MINOR.PATCH[-prerelease]"
+          curl -fsSLo "$RUNNER_TEMP/shellcheck.tar.gz" \
+            "https://github.com/koalaman/shellcheck/releases/download/$SHELLCHECK_VERSION/shellcheck-$SHELLCHECK_VERSION.linux.x86_64.tar.gz"
+          echo "$SHELLCHECK_SHA256  $RUNNER_TEMP/shellcheck.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/shellcheck.tar.gz" -C "$RUNNER_TEMP"
+          sudo install -m 0755 "$RUNNER_TEMP/shellcheck-$SHELLCHECK_VERSION/shellcheck" /usr/local/bin/shellcheck
+          shellcheck --version
+
+      - name: Check tag, commit and version
+        # The build is of this push's commit: the tag must point at it, and its pom must carry the released version.
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tagged="$(gh api "repos/$GITHUB_REPOSITORY/commits/$TAG" --jq .sha)"
+          if [[ "$tagged" != "$GITHUB_SHA" ]]; then
+            echo "::error::tag $TAG points at $tagged, not at the built commit $GITHUB_SHA"
             exit 1
           fi
-          version="${TAG#v}"
-          echo "version=$version" >> "$GITHUB_OUTPUT"
-          ./mvnw -B -ntp org.codehaus.mojo:versions-maven-plugin:2.25.1:set \
-            -DnewVersion="$version" -DgenerateBackupPoms=false
+          pom="$(./mvnw -B -ntp -q help:evaluate -Dexpression=project.version -DforceStdout)"
+          if [[ "$TAG" != "v$VERSION" || "$pom" != "$VERSION" ]]; then
+            echo "::error::tag $TAG, release version $VERSION and pom.xml version $pom do not agree"
+            exit 1
+          fi
 
       - name: Build and test
         # also writes the CycloneDX SBOM target/bom.json (cyclonedx-maven-plugin, package phase)
         run: ./mvnw -B -ntp verify
 
       - name: Stage release assets
-        env:
-          VERSION: ${{ steps.version.outputs.version }}
         run: |
           mkdir dist
           cp "target/sonar-shell-ci-plugin-$VERSION.jar" dist/
@@ -69,32 +107,31 @@ jobs:
 
       - name: Vulnerability scan of the SBOM (osv-scanner)
         # what ships in the jar, as resolved by this build
-        run: scripts/osv-scan.sh -L "dist/sonar-shell-ci-plugin-${{ steps.version.outputs.version }}.cdx.json"
+        run: scripts/osv-scan.sh -L "dist/sonar-shell-ci-plugin-$VERSION.cdx.json"
 
       - name: Attest build provenance
         id: provenance
         uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
         with:
-          subject-path: dist/sonar-shell-ci-plugin-${{ steps.version.outputs.version }}.jar
+          subject-path: dist/sonar-shell-ci-plugin-${{ needs.release-please.outputs.version }}.jar
 
       - name: Attest SBOM
         id: sbom
         uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
         with:
-          subject-path: dist/sonar-shell-ci-plugin-${{ steps.version.outputs.version }}.jar
-          sbom-path: dist/sonar-shell-ci-plugin-${{ steps.version.outputs.version }}.cdx.json
+          subject-path: dist/sonar-shell-ci-plugin-${{ needs.release-please.outputs.version }}.jar
+          sbom-path: dist/sonar-shell-ci-plugin-${{ needs.release-please.outputs.version }}.cdx.json
 
       - name: Verify attestations
         env:
           GH_TOKEN: ${{ github.token }}
-          VERSION: ${{ steps.version.outputs.version }}
           PROVENANCE_BUNDLE: ${{ steps.provenance.outputs.bundle-path }}
           SBOM_BUNDLE: ${{ steps.sbom.outputs.bundle-path }}
         run: |
           jar="dist/sonar-shell-ci-plugin-$VERSION.jar"
           cp "$PROVENANCE_BUNDLE" "$jar.provenance.sigstore.json"
           cp "$SBOM_BUNDLE" "$jar.sbom.sigstore.json"
-          # signed by this workflow, from this tag, on a GitHub-hosted runner; checked both against the
+          # signed by this workflow, from main at the tagged commit, on a GitHub-hosted runner; checked both against the
           # attestations API and against the bundles that are published with the release
           common=(--repo "$GITHUB_REPOSITORY"
                   --signer-workflow "$GITHUB_REPOSITORY/.github/workflows/release.yaml"
@@ -108,19 +145,10 @@ jobs:
           verify https://slsa.dev/provenance/v1 "$jar.provenance.sigstore.json"
           verify https://cyclonedx.org/bom "$jar.sbom.sigstore.json"
 
-      - name: Publish release
-        # Creates the release, or attaches the assets to an existing one (e.g. drafted in the GitHub UI, which also
-        # pushes the tag), keeping its title and notes. Never replaces an asset: upload fails if one already exists.
+      - name: Attach assets to the release
+        # The release was created by release-please. Never replaces an asset: upload fails if one already exists.
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           (cd dist && sha256sum -- * > SHA256SUMS)
-          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo "Release $TAG exists: attaching assets"
-            gh release upload "$TAG" dist/* --repo "$GITHUB_REPOSITORY"
-          else
-            prerelease=()
-            if [[ "$TAG" == *-* ]]; then prerelease=(--prerelease); fi
-            gh release create "$TAG" dist/* --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes \
-              --title "$TAG" "${prerelease[@]}"
-          fi
+          gh release upload "$TAG" dist/* --repo "$GITHUB_REPOSITORY"

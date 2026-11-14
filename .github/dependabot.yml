@@ -6,6 +6,9 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    commit-message:
+      prefix: "build" # Conventional Commits, read by release-please: build(deps) does not trigger a release
+      include: "scope"
     ignore:
       # Pinned to the targeted SonarQube Community Build (26.11), bumped together by hand when targeting a newer one:
       # sonar.api.version is also pluginApiMinVersion, and a server with an older plugin API refuses the plugin.
@@ -17,3 +20,6 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    commit-message:
+      prefix: "build"
+      include: "scope"

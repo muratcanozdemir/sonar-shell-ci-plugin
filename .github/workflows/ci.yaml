@@ -27,7 +27,7 @@ jobs:
           cache: maven
 
       - name: Install ShellCheck
-        # same release as docker/scanner.Dockerfile and the generated rules (Ubuntu's package is older)
+        # same release as release.yaml, docker/scanner.Dockerfile and the generated rules (Ubuntu's package is older)
         env:
           SHELLCHECK_VERSION: v0.11.0
           SHELLCHECK_SHA256: b7af85e41cc99489dcc21d66c6d5f3685138f06d34651e6d34b42ec6d54fe6f6
@@ -58,7 +58,13 @@ jobs:
           if-no-files-found: error
 
       - name: SonarQube analysis
+        # SonarQube Cloud by default (the Marketplace requires a public project with a green quality gate); set the
+        # SONAR_HOST_URL variable to analyze on another server instead. Fails when the quality gate fails.
         if: ${{ env.SONAR_TOKEN != '' }}
         uses: SonarSource/sonarqube-scan-action@e805d875275f728fac1885b413934be6d7c63f65 # v8.4.1
         env:
-          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
+          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL || 'https://sonarcloud.io' }}
+        with:
+          args: >
+            -Dsonar.qualitygate.wait=true
+            ${{ vars.SONAR_ORGANIZATION && format('-Dsonar.organization={0}', vars.SONAR_ORGANIZATION) || '' }}
