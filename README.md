@@ -209,7 +209,7 @@ scans the SBOM with osv-scanner, attests provenance and SBOM, verifies both atte
 commit, GitHub-hosted runner), and attaches the JAR, SBOM, attestation bundles and checksums to the release.
 
 Pushing a tag `vX.Y.Z` by hand still runs `release.yaml` on its own, as before release-please: it builds that tag and
-creates the release (generated notes), or attaches the assets to an existing release that has none. Use it to rebuild
+creates the release (notes from `CHANGELOG.md`), or attaches the assets to an existing release that has none. Use it to rebuild
 a release whose run failed or that was deleted. Assets already on a release are never replaced.
 
 ```bash
