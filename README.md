@@ -200,13 +200,21 @@ Versions and the changelog are automatic. Commits on `main` follow
 `feat!:` or a `BREAKING CHANGE:` footer a major one. Other types (`docs:`, `test:`, `build:`, `ci:`, `chore:`,
 `refactor:`) do not release anything by themselves.
 
-On every push to `main`, `.github/workflows/release.yaml` runs
+On every push to `main`, `.github/workflows/release-please.yaml` runs
 [release-please](https://github.com/googleapis/release-please), which keeps a release pull request up to date: it
 bumps the version in `pom.xml`, `sonar-project.properties` and `.release-please-manifest.json` and writes
-`CHANGELOG.md`. **Merging that pull request is the release:** it tags `vX.Y.Z` and creates the GitHub release with the
-changelog as notes. The same workflow then builds and tests that commit, scans the SBOM with osv-scanner, attests
-provenance and SBOM, verifies both attestations (signer workflow, branch, commit, GitHub-hosted runner), and attaches
-the JAR, SBOM, attestation bundles and checksums to the release.
+`CHANGELOG.md`. **Merging that pull request is the release:** it tags `vX.Y.Z`, creates the GitHub release with the
+changelog as notes, and calls `.github/workflows/release.yaml` with the tag. That workflow builds and tests the tag,
+scans the SBOM with osv-scanner, attests provenance and SBOM, verifies both attestations (signer workflow, ref,
+commit, GitHub-hosted runner), and attaches the JAR, SBOM, attestation bundles and checksums to the release.
+
+Pushing a tag `vX.Y.Z` by hand still runs `release.yaml` on its own, as before release-please: it builds that tag and
+creates the release (generated notes), or attaches the assets to an existing release that has none. Use it to rebuild
+a release whose run failed or that was deleted. Assets already on a release are never replaced.
+
+```bash
+git tag -a v1.0.0 -m v1.0.0 && git push origin v1.0.0
+```
 
 Between releases, `pom.xml` carries the version of the last release, so a JAR built locally from `main` has that
 version but is not that release: only JARs from the releases page are, and only those verify with

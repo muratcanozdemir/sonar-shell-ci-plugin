@@ -1,0 +1,46 @@
+name: Release Please
+
+# Keeps a release pull request open on main: it bumps the version (pom.xml, sonar-project.properties,
+# .release-please-manifest.json) and writes CHANGELOG.md from the Conventional Commits since the last release.
+# Merging it tags vX.Y.Z and creates the GitHub release with those notes; release.yaml then builds the plugin at the
+# tag and attaches the jar, SBOM, attestations and checksums to that release.
+
+on:
+  push:
+    branches: [main]
+
+permissions: {}
+
+concurrency:
+  group: release-please
+  cancel-in-progress: false
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write # tag, GitHub release, release branch
+      pull-requests: write # the release pull request
+      issues: write # its labels
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - id: release
+        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  release:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created == 'true' }}
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+      artifact-metadata: write
+    uses: ./.github/workflows/release.yaml
+    with:
+      tag: ${{ needs.release-please.outputs.tag_name }}
