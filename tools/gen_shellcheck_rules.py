@@ -18,6 +18,13 @@ LEVEL_RANK = {"style": 0, "info": 1, "warning": 2, "error": 3}
 HELPER = re.compile(r'\b(err|warn|info|style)(?:WithFix|Msg)?\s+(?:\([^()]*\)|[A-Za-z_.\']+)\s+([0-9]{4})\b\s*\$?\s*(?:"((?:[^"\\]|\\.)*)")?')
 # Parser / other: `parseProblemAt pos ErrorC 1035 "msg"`, `makeComment WarningC id 2155 "msg"`
 SEVERITY_C = re.compile(r'\b(ErrorC|WarningC|InfoC|StyleC)\b[^"\n]{0,60}?\b([0-9]{4})\b\s*\$?\s*(?:"((?:[^"\\]|\\.)*)")?')
+# Codes the former ShellCheck plugin for SonarQube (sonar-shellcheck, rule repository "shellcheck") defined but that
+# neither the current sources nor the wiki document. Kept as retired rules, off by default, so that this plugin can
+# replace it without existing issues and quality profiles losing their rules.
+LEGACY = {
+    1013: "Bash requires ; or \\n here, after redirecting nested compound commands",
+    3058: "String operations on $@/$* are not supported in dash and undefined in POSIX sh",
+}
 LEVEL_OF = {"err": "error", "warn": "warning", "info": "info", "style": "style",
             "ErrorC": "error", "WarningC": "warning", "InfoC": "info", "StyleC": "style"}
 
@@ -55,6 +62,9 @@ def main(src_dir, wiki_dir, out_file):
         code = int(page.stem[2:])
         if code not in checks:
             checks[code] = {"level": "warning", "message": None, "wikiOnly": True}
+    for code, title in LEGACY.items():
+        if code not in checks:
+            checks[code] = {"level": "warning", "message": title, "legacy": True}
 
     rules = []
     for code in sorted(checks):
@@ -79,7 +89,9 @@ def main(src_dir, wiki_dir, out_file):
             "level": checks[code]["level"],
             "wiki": page.exists(),
             "wikiOnly": checks[code].get("wikiOnly", False),
-            "defaultActive": not checks[code].get("wikiOnly", False) and checks[code]["level"] != "style",
+            "legacy": checks[code].get("legacy", False),
+            "defaultActive": not checks[code].get("wikiOnly", False) and not checks[code].get("legacy", False)
+                             and checks[code]["level"] != "style",
         })
 
     rev = revision(src)

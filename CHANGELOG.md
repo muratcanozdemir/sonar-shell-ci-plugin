@@ -3,7 +3,7 @@
 Maintained by [release-please](https://github.com/googleapis/release-please) from
 [Conventional Commits](https://www.conventionalcommits.org); do not edit released sections by hand.
 
-## [1.0.0](https://github.com/muratcanozdemir/sonar-shell-ci-plugin/releases/tag/v1.0.0) (2026-11-12)
+## [1.0.0](https://github.com/muratcanozdemir/sonar-shell-ci-plugin/releases/tag/v1.0.0) (2026-11-14)
 
 First release, for SonarQube Community Build 26.11 and later (plugin API 14.1).
 

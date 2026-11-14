@@ -67,7 +67,7 @@ public class ShellCheckSensor implements Sensor {
     }
 
     List<ShellCheckComment> comments = new ArrayList<>();
-    boolean skip = context.config().getBoolean(Settings.SHELLCHECK_SKIP).orElse(false);
+    boolean skip = Settings.getBoolean(context.config(), Settings.SHELLCHECK_SKIP);
     if (!skip && !files.isEmpty()) {
       comments.addAll(runShellCheck(context, new ArrayList<>(files.keySet())));
     }
@@ -90,7 +90,7 @@ public class ShellCheckSensor implements Sensor {
     Optional<String> version = runner.version();
     if (version.isEmpty()) {
       LOG.warn("ShellCheck executable '{}' could not be run. Shell scripts get metrics only. Install ShellCheck, set {}, or import reports with {}.",
-        context.config().get(Settings.SHELLCHECK_PATH).orElse(Settings.SHELLCHECK_PATH_DEFAULT),
+        Settings.get(context.config(), Settings.SHELLCHECK_PATH).orElse(Settings.SHELLCHECK_PATH_DEFAULT),
         Settings.SHELLCHECK_PATH, Settings.SHELLCHECK_REPORT_PATHS);
       return List.of();
     }
@@ -106,7 +106,7 @@ public class ShellCheckSensor implements Sensor {
   }
 
   public static ShellCheckRunner runner(SensorContext context) {
-    String executable = context.config().get(Settings.SHELLCHECK_PATH).orElse(Settings.SHELLCHECK_PATH_DEFAULT);
+    String executable = Settings.get(context.config(), Settings.SHELLCHECK_PATH).orElse(Settings.SHELLCHECK_PATH_DEFAULT);
     long timeout = context.config().getLong(Settings.SHELLCHECK_TIMEOUT).orElse(300L);
     return new ShellCheckRunner(executable, timeout);
   }

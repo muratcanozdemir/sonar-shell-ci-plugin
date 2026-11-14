@@ -13,7 +13,16 @@ public final class ShellCheckCatalog {
 
   private static final String RESOURCE = "/io/github/shellci/shell/shellcheck-rules.json";
 
-  public record Entry(String key, String name, String level, boolean wiki, boolean wikiOnly, boolean defaultActive) {
+  /**
+   * @param wikiOnly documented in the ShellCheck wiki, no longer emitted by ShellCheck
+   * @param legacy   defined by the former ShellCheck plugin for SonarQube only, no longer emitted by ShellCheck
+   */
+  public record Entry(String key, String name, String level, boolean wiki, boolean wikiOnly, boolean legacy, boolean defaultActive) {
+
+    /** Kept so that existing issues and quality profiles keep their rule, but not raised by current ShellCheck releases. */
+    public boolean retired() {
+      return wikiOnly || legacy;
+    }
   }
 
   private record Catalog(String shellcheckRevision, List<Entry> rules) {

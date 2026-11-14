@@ -6,7 +6,7 @@ SonarQube Community Build.
 On the free Community Build, shell scripts and CI pipeline security are not covered out of the box, and the old
 ShellCheck plugin from the Marketplace no longer runs on current versions. This plugin fills that gap:
 
-- **Shell:** every [ShellCheck](https://www.shellcheck.net) check as a SonarQube rule (524 rules, 446 active by default).
+- **Shell:** every [ShellCheck](https://www.shellcheck.net) check as a SonarQube rule (526 rules, 446 active by default).
 - **CI pipelines:** 13 rules for pipeline security and correctness, including ShellCheck on the scripts *inside* your
   pipeline files, reported at the exact line in the YAML.
 
@@ -23,7 +23,7 @@ Files ending in `.sh`, `.bash`, `.ksh` or `.dash` are analyzed with ShellCheck. 
 | info | Code Smell | Maintainability / Low | yes |
 | style | Code Smell | Maintainability / Info | no |
 
-¹ Except the 42 deprecated rules: checks documented in the ShellCheck wiki that ShellCheck no longer emits. They are kept so existing issues stay attached to a rule, but are not active.
+¹ Except the 44 deprecated rules: checks that ShellCheck no longer emits, either documented in the ShellCheck wiki (42) or defined by the former ShellCheck plugin (`SC1013`, `SC3058`). They are kept so existing issues stay attached to a rule, but are not active.
 
 Line-of-code and comment metrics are computed even when ShellCheck is not installed. A project's `.shellcheckrc` and
 `# shellcheck disable=...` comments are honored.
@@ -69,7 +69,7 @@ How pipeline scripts are checked with ShellCheck:
 
 ## Requirements
 
-- SonarQube Community Build **26.11** or later (plugin API 14.1). SonarQube Server is not tested.
+- SonarQube Community Build **25.12** or later (plugin API 13.4.2). SonarQube Server is not tested.
 - **ShellCheck** on the machine that runs the scanner, for the shell rules and `RunShellCheck`. The rules are
   generated from ShellCheck 0.11.0, the recommended version. Without ShellCheck, shell files get metrics only and a
   warning is logged. You can also import ShellCheck reports instead (see below).
@@ -94,6 +94,22 @@ gh attestation verify sonar-shell-ci-plugin-<version>.jar --repo muratcanozdemir
 
 The **Shell & CI way** quality profiles for the *Shell* and *CI Pipelines* languages are created and set as default.
 
+### Replacing the former ShellCheck plugin
+
+This plugin replaces [sonar-shellcheck](https://github.com/sbaudoin/sonar-shellcheck) (plugin key `shellcheck`), which
+supports Community Build up to 25.12. It uses the same *Shell* language (`shell`), rule repository (`shellcheck`) and
+rule keys (`SC1000`, `SC2086`, …), so existing issues, their history and quality profiles that activate ShellCheck
+rules carry over. Its analysis properties `sonar.shellcheck.shellcheck.path` and `sonar.shell.skip` are still read
+(with a deprecation warning); rename them to `sonar.shellcheck.path` and `sonar.shellcheck.skip`.
+
+1. Remove `sonar-shellcheck-plugin-<version>.jar` from `<sonarqube>/extensions/plugins/` (or uninstall it in the
+   Marketplace). The two plugins define the same language and cannot be installed together.
+2. Install this plugin as above and restart SonarQube. This works on 25.12, before upgrading SonarQube, as well as
+   after.
+3. Rules the former plugin had and ShellCheck no longer emits stay available as deprecated rules. Quality profiles
+   that extend the former plugin's default profile keep their rules; to get the rules active by default here, extend
+   or switch to *Shell & CI way*.
+
 ## Analysis
 
 Nothing to configure: pipeline files are found by path, shell scripts by suffix. Make sure ShellCheck is on the
@@ -112,8 +128,8 @@ Distribution packages can be older than ShellCheck 0.11.0. Checks they lack are 
 | Property | Default | Description |
 |---|---|---|
 | `sonar.shell.file.suffixes` | `.sh,.bash,.ksh,.dash` | Shell script suffixes |
-| `sonar.shellcheck.path` | `shellcheck` | ShellCheck executable. When it cannot be run, shell files get metrics and imported reports only, and pipeline scripts are not checked |
-| `sonar.shellcheck.skip` | `false` | Never run ShellCheck: shell files only get imported reports, pipeline scripts are not checked |
+| `sonar.shellcheck.path` | `shellcheck` | ShellCheck executable. When it cannot be run, shell files get metrics and imported reports only, and pipeline scripts are not checked. Formerly `sonar.shellcheck.shellcheck.path` |
+| `sonar.shellcheck.skip` | `false` | Never run ShellCheck: shell files only get imported reports, pipeline scripts are not checked. Formerly `sonar.shell.skip` |
 | `sonar.shellcheck.reportPaths` | | ShellCheck reports to import (`shellcheck -f json1 ...` or `-f json`) |
 | `sonar.shellcheck.timeoutSeconds` | `300` | Timeout of one ShellCheck run |
 | `sonar.ci.githubActions.patterns` | `**/.github/workflows/*.yml,…,**/action.yml,…` | GitHub Actions workflows and action metadata |

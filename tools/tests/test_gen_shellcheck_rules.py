@@ -102,6 +102,25 @@ class GeneratorTest(unittest.TestCase):
         self.assertFalse(rules["SC2039"]["defaultActive"])
         self.assertEqual(rules["SC2039"]["level"], "warning")
         self.assertFalse(rules["SC2086"]["wikiOnly"])
+        self.assertFalse(rules["SC2086"]["legacy"])
+        self.assertFalse(rules["SC2039"]["legacy"])
+
+    def test_former_plugin_rules(self):
+        _, rules, _ = self.generate()
+        for code in gen.LEGACY:
+            rule = rules[f"SC{code}"]
+            self.assertTrue(rule["legacy"])
+            self.assertFalse(rule["wikiOnly"])
+            self.assertFalse(rule["wiki"])
+            self.assertFalse(rule["defaultActive"])
+        self.assertEqual(rules["SC1013"]["name"],
+                         "SC1013: Bash requires ; or \\n here, after redirecting nested compound commands")
+
+    def test_former_plugin_rule_found_again_is_not_legacy(self):
+        self.page(3058, "## In POSIX sh, string operations on $@ are undefined.\n")
+        _, rules, _ = self.generate()
+        self.assertFalse(rules["SC3058"]["legacy"])
+        self.assertTrue(rules["SC3058"]["wikiOnly"])
 
     def test_output_file(self):
         data, rules, stdout = self.generate()

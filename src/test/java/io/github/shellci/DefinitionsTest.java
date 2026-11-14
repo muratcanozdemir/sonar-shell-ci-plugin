@@ -11,16 +11,21 @@ import io.github.shellci.shell.ShellLanguage;
 import io.github.shellci.shell.ShellQualityProfile;
 import io.github.shellci.shell.ShellRulesDefinition;
 import java.util.Arrays;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.sonar.api.Plugin;
 import org.sonar.api.SonarEdition;
 import org.sonar.api.SonarQubeSide;
 import org.sonar.api.SonarRuntime;
+import org.sonar.api.config.PropertyDefinition;
+import org.sonar.api.config.PropertyDefinitions;
 import org.sonar.api.config.internal.MapSettings;
 import org.sonar.api.internal.SonarRuntimeImpl;
+import org.sonar.api.rule.RuleStatus;
 import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.profile.BuiltInQualityProfilesDefinition;
 import org.sonar.api.server.rule.RulesDefinition;
+import org.sonar.api.utils.System2;
 import org.sonar.api.utils.Version;
 
 class DefinitionsTest {
@@ -46,6 +51,51 @@ class DefinitionsTest {
     assertThat(sc2086.htmlDescription()).contains("https://www.shellcheck.net/wiki/SC2086");
     assertThat(sc2086.activatedByDefault()).isTrue();
     assertThat(repository.rule("SC2164").type()).isEqualTo(RuleType.BUG);
+  }
+
+  @Test
+  void former_shellcheck_plugin_rules_are_kept_as_deprecated() {
+    RulesDefinition.Context context = new RulesDefinition.Context();
+    new ShellRulesDefinition().define(context);
+    RulesDefinition.Repository repository = context.repository(ShellRulesDefinition.REPOSITORY);
+    for (String key : List.of("SC1013", "SC3058")) {
+      RulesDefinition.Rule rule = repository.rule(key);
+      assertThat(rule).as(key).isNotNull();
+      assertThat(rule.status()).as(key).isEqualTo(RuleStatus.DEPRECATED);
+      assertThat(rule.activatedByDefault()).as(key).isFalse();
+      assertThat(rule.htmlDescription()).as(key).contains("no longer raise").doesNotContain("shellcheck.net/wiki");
+    }
+    assertThat(repository.rule("SC2039").status()).isEqualTo(RuleStatus.DEPRECATED); // wiki only
+    assertThat(repository.rule("SC2086").status()).isEqualTo(RuleStatus.READY);
+  }
+
+  @Test
+  void former_shellcheck_plugin_settings_are_honored() {
+    // with the plugin's definitions, as in an analysis: a declared default would hide the former keys
+    MapSettings settings = new MapSettings(new PropertyDefinitions(System2.INSTANCE, Settings.definitions()));
+    assertThat(Settings.get(settings.asConfig(), Settings.SHELLCHECK_PATH)).isEmpty();
+    assertThat(Settings.getBoolean(settings.asConfig(), Settings.SHELLCHECK_SKIP)).isFalse();
+
+    settings.setProperty(Settings.LEGACY_SHELLCHECK_PATH, "/opt/shellcheck");
+    settings.setProperty(Settings.LEGACY_SHELLCHECK_SKIP, "true");
+    assertThat(Settings.get(settings.asConfig(), Settings.SHELLCHECK_PATH)).contains("/opt/shellcheck");
+    assertThat(Settings.getBoolean(settings.asConfig(), Settings.SHELLCHECK_SKIP)).isTrue();
+
+    // the current keys win; a blank value, as the former plugin's default path, counts as unset
+    settings.setProperty(Settings.SHELLCHECK_PATH, "/usr/bin/shellcheck");
+    settings.setProperty(Settings.SHELLCHECK_SKIP, "false");
+    assertThat(Settings.get(settings.asConfig(), Settings.SHELLCHECK_PATH)).contains("/usr/bin/shellcheck");
+    assertThat(Settings.getBoolean(settings.asConfig(), Settings.SHELLCHECK_SKIP)).isFalse();
+    settings.setProperty(Settings.SHELLCHECK_PATH, " ");
+    settings.setProperty(Settings.LEGACY_SHELLCHECK_PATH, "");
+    assertThat(Settings.get(settings.asConfig(), Settings.SHELLCHECK_PATH)).isEmpty();
+    assertThat(Settings.get(settings.asConfig(), Settings.SHELLCHECK_TIMEOUT)).contains("300");
+
+    // declared (the scanner only exposes declared properties), hidden, and not deprecated keys (renamed silently)
+    assertThat(Settings.definitions()).extracting(PropertyDefinition::deprecatedKey).allMatch(k -> k == null || k.isEmpty());
+    assertThat(Settings.definitions()).filteredOn(d -> d.key().equals(Settings.LEGACY_SHELLCHECK_PATH)
+        || d.key().equals(Settings.LEGACY_SHELLCHECK_SKIP))
+      .hasSize(2).allMatch(PropertyDefinition::hidden);
   }
 
   @Test

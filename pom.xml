@@ -47,6 +47,11 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>17</maven.compiler.release>
+    <!-- Oldest plugin API the plugin runs on: Community Build 25.12, the last version the former ShellCheck plugin
+         supports, so that it can be replaced before or after upgrading. "./mvnw -P minimum-api compile" checks that the
+         main code compiles against it. -->
+    <sonar.api.min.version>13.4.2.4284</sonar.api.min.version>
+    <!-- Plugin API the code is built and tested against: the one shipped with Community Build 26.11 (test fixtures) -->
     <sonar.api.version>14.1.0.5543</sonar.api.version>
     <snakeyaml.version>3.2</snakeyaml.version>
     <gson.version>2.15.0</gson.version>
@@ -117,7 +122,7 @@
           <pluginKey>shellci</pluginKey>
           <pluginClass>io.github.shellci.ShellCiPlugin</pluginClass>
           <pluginName>Shell &amp; CI plugin for SonarQube</pluginName>
-          <pluginApiMinVersion>${sonar.api.version}</pluginApiMinVersion>
+          <pluginApiMinVersion>${sonar.api.min.version}</pluginApiMinVersion>
           <!-- No requiredForLanguages: pipeline files are indexed as YAML (or with no language), so the plugin must
                always be loaded, not only for projects containing shell scripts. -->
           <jreMinVersion>17</jreMinVersion>
@@ -172,4 +177,15 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <!-- Compiles the main code against the oldest supported plugin API (tests need the newer test fixtures) -->
+      <id>minimum-api</id>
+      <properties>
+        <sonar.api.version>${sonar.api.min.version}</sonar.api.version>
+        <maven.test.skip>true</maven.test.skip>
+      </properties>
+    </profile>
+  </profiles>
 </project>

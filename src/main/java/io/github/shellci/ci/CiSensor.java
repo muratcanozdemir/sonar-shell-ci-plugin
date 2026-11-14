@@ -153,7 +153,7 @@ public class CiSensor implements Sensor {
   }
 
   private static void runShellCheck(SensorContext context, List<PendingScript> scripts, ActiveRule rule) {
-    if (context.config().getBoolean(Settings.SHELLCHECK_SKIP).orElse(false)) {
+    if (Settings.getBoolean(context.config(), Settings.SHELLCHECK_SKIP)) {
       return;
     }
     ShellCheckRunner runner = ShellCheckSensor.runner(context);

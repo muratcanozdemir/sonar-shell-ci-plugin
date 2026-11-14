@@ -39,8 +39,8 @@ public class ShellRulesDefinition implements RulesDefinition {
           .setCleanCodeAttribute(CleanCodeAttribute.CONVENTIONAL)
           .addDefaultImpact(SoftwareQuality.MAINTAINABILITY, Severity.INFO);
       }
-      if (entry.wikiOnly()) {
-        // Documented in the wiki but no longer emitted by current ShellCheck releases.
+      if (entry.retired()) {
+        // Documented in the wiki or defined by the former ShellCheck plugin, but no longer emitted by ShellCheck.
         rule.setStatus(RuleStatus.DEPRECATED);
       }
     }
@@ -56,6 +56,10 @@ public class ShellRulesDefinition implements RulesDefinition {
       html.append("<p>See <a href=\"https://www.shellcheck.net/wiki/").append(entry.key())
         .append("\">the ShellCheck wiki page for ").append(entry.key())
         .append("</a> for problematic code, the correct alternative, rationale and known exceptions.</p>");
+    }
+    if (entry.retired()) {
+      html.append("<p>Current ShellCheck releases no longer raise this issue. The rule is kept so that existing issues and quality ")
+        .append("profiles keep referring to it.</p>");
     }
     html.append("<p>To suppress a single occurrence, add <code># shellcheck disable=")
       .append(entry.key()).append("</code> on the line before the command.</p>");

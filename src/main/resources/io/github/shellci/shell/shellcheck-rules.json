@@ -7,6 +7,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -15,6 +16,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -23,6 +25,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -31,6 +34,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -39,6 +43,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -47,6 +52,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -55,6 +61,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -63,6 +70,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -71,6 +79,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -79,7 +88,17 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
+  },
+  {
+   "key": "SC1013",
+   "name": "SC1013: Bash requires ; or \\n here, after redirecting nested compound commands",
+   "level": "warning",
+   "wiki": false,
+   "wikiOnly": false,
+   "legacy": true,
+   "defaultActive": false
   },
   {
    "key": "SC1014",
@@ -87,6 +106,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -95,6 +115,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -103,6 +124,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -111,6 +133,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -119,6 +142,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -127,6 +151,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -135,6 +160,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -143,6 +169,7 @@
    "level": "error",
    "wiki": false,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -151,6 +178,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -159,6 +187,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -167,6 +196,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -175,6 +205,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -183,6 +214,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -191,6 +223,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -199,6 +232,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -207,6 +241,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -215,6 +250,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -223,6 +259,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -231,6 +268,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -239,6 +277,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -247,6 +286,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -255,6 +295,7 @@
    "level": "error",
    "wiki": false,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -263,6 +304,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -271,6 +313,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -279,6 +322,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -287,6 +331,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -295,6 +340,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -303,6 +349,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -311,6 +358,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -319,6 +367,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -327,6 +376,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -335,6 +385,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -343,6 +394,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -351,6 +403,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -359,6 +412,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -367,6 +421,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -375,6 +430,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -383,6 +439,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -391,6 +448,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -399,6 +457,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -407,6 +466,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -415,6 +475,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -423,6 +484,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -431,6 +493,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -439,6 +502,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -447,6 +511,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -455,6 +520,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -463,6 +529,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -471,6 +538,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -479,6 +547,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -487,6 +556,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -495,6 +565,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -503,6 +574,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -511,6 +583,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -519,6 +592,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -527,6 +601,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -535,6 +610,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -543,6 +619,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -551,6 +628,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -559,6 +637,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -567,6 +646,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -575,6 +655,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -583,6 +664,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -591,6 +673,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -599,6 +682,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -607,6 +691,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -615,6 +700,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -623,6 +709,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -631,6 +718,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -639,6 +727,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -647,6 +736,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -655,6 +745,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -663,6 +754,7 @@
    "level": "info",
    "wiki": false,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -671,6 +763,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -679,6 +772,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -687,6 +781,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -695,6 +790,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -703,6 +799,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -711,6 +808,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -719,6 +817,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -727,6 +826,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -735,6 +835,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -743,6 +844,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -751,6 +853,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -759,6 +862,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -767,6 +871,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -775,6 +880,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -783,6 +889,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -791,6 +898,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -799,6 +907,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -807,6 +916,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -815,6 +925,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -823,6 +934,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -831,6 +943,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -839,6 +952,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -847,6 +961,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -855,6 +970,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -863,6 +979,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -871,6 +988,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -879,6 +997,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -887,6 +1006,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -895,6 +1015,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -903,6 +1024,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -911,6 +1033,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -919,6 +1042,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -927,6 +1051,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -935,6 +1060,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -943,6 +1069,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -951,6 +1078,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -959,6 +1087,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -967,6 +1096,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -975,6 +1105,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -983,6 +1114,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -991,6 +1123,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -999,6 +1132,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1007,6 +1141,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1015,6 +1150,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1023,6 +1159,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1031,6 +1168,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1039,6 +1177,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1047,6 +1186,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1055,6 +1195,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1063,6 +1204,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1071,6 +1213,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1079,6 +1222,7 @@
    "level": "error",
    "wiki": false,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1087,6 +1231,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1095,6 +1240,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1103,6 +1249,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1111,6 +1258,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1119,6 +1267,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1127,6 +1276,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1135,6 +1285,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1143,6 +1294,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1151,6 +1303,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1159,6 +1312,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1167,6 +1321,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1175,6 +1330,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1183,6 +1339,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1191,6 +1348,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1199,6 +1357,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1207,6 +1366,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1215,6 +1375,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1223,6 +1384,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1231,6 +1393,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1239,6 +1402,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1247,6 +1411,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1255,6 +1420,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1263,6 +1429,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1271,6 +1438,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1279,6 +1447,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1287,6 +1456,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1295,6 +1465,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1303,6 +1474,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1311,6 +1483,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1319,6 +1492,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1327,6 +1501,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1335,6 +1510,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1343,6 +1519,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1351,6 +1528,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1359,6 +1537,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1367,6 +1546,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1375,6 +1555,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1383,6 +1564,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1391,6 +1573,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1399,6 +1582,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1407,6 +1591,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1415,6 +1600,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1423,6 +1609,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1431,6 +1618,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1439,6 +1627,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1447,6 +1636,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1455,6 +1645,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1463,6 +1654,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1471,6 +1663,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1479,6 +1672,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1487,6 +1681,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1495,6 +1690,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1503,6 +1699,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1511,6 +1708,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1519,6 +1717,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1527,6 +1726,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1535,6 +1735,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1543,6 +1744,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1551,6 +1753,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1559,6 +1762,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1567,6 +1771,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1575,6 +1780,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1583,6 +1789,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1591,6 +1798,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1599,6 +1807,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1607,6 +1816,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1615,6 +1825,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1623,6 +1834,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1631,6 +1843,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1639,6 +1852,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1647,6 +1861,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1655,6 +1870,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1663,6 +1879,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1671,6 +1888,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1679,6 +1897,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1687,6 +1906,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1695,6 +1915,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1703,6 +1924,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1711,6 +1933,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1719,6 +1942,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1727,6 +1951,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1735,6 +1960,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1743,6 +1969,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1751,6 +1978,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1759,6 +1987,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1767,6 +1996,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1775,6 +2005,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1783,6 +2014,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1791,6 +2023,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1799,6 +2032,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1807,6 +2041,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1815,6 +2050,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1823,6 +2059,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1831,6 +2068,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1839,6 +2077,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1847,6 +2086,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1855,6 +2095,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1863,6 +2104,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1871,6 +2113,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1879,6 +2122,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1887,6 +2131,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1895,6 +2140,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1903,6 +2149,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1911,6 +2158,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1919,6 +2167,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1927,6 +2176,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1935,6 +2185,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1943,6 +2194,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1951,6 +2203,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1959,6 +2212,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1967,6 +2221,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1975,6 +2230,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1983,6 +2239,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -1991,6 +2248,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -1999,6 +2257,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2007,6 +2266,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2015,6 +2275,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2023,6 +2284,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2031,6 +2293,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2039,6 +2302,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2047,6 +2311,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2055,6 +2320,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2063,6 +2329,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2071,6 +2338,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2079,6 +2347,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2087,6 +2356,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2095,6 +2365,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2103,6 +2374,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2111,6 +2383,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2119,6 +2392,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2127,6 +2401,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2135,6 +2410,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2143,6 +2419,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2151,6 +2428,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2159,6 +2437,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2167,6 +2446,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2175,6 +2455,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2183,6 +2464,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2191,6 +2473,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2199,6 +2482,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2207,6 +2491,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2215,6 +2500,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2223,6 +2509,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2231,6 +2518,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2239,6 +2527,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2247,6 +2536,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2255,6 +2545,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2263,6 +2554,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2271,6 +2563,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2279,6 +2572,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2287,6 +2581,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2295,6 +2590,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2303,6 +2599,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2311,6 +2608,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2319,6 +2617,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2327,6 +2626,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2335,6 +2635,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2343,6 +2644,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2351,6 +2653,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2359,6 +2662,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2367,6 +2671,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2375,6 +2680,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2383,6 +2689,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2391,6 +2698,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2399,6 +2707,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2407,6 +2716,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2415,6 +2725,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2423,6 +2734,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2431,6 +2743,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2439,6 +2752,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2447,6 +2761,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2455,6 +2770,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2463,6 +2779,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2471,6 +2788,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2479,6 +2797,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2487,6 +2806,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2495,6 +2815,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2503,6 +2824,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2511,6 +2833,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2519,6 +2842,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2527,6 +2851,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2535,6 +2860,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2543,6 +2869,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2551,6 +2878,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2559,6 +2887,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2567,6 +2896,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2575,6 +2905,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2583,6 +2914,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2591,6 +2923,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2599,6 +2932,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2607,6 +2941,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2615,6 +2950,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2623,6 +2959,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2631,6 +2968,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2639,6 +2977,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2647,6 +2986,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2655,6 +2995,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2663,6 +3004,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2671,6 +3013,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2679,6 +3022,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2687,6 +3031,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2695,6 +3040,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2703,6 +3049,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2711,6 +3058,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2719,6 +3067,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2727,6 +3076,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2735,6 +3085,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2743,6 +3094,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2751,6 +3103,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2759,6 +3112,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2767,6 +3121,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2775,6 +3130,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2783,6 +3139,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2791,6 +3148,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2799,6 +3157,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2807,6 +3166,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2815,6 +3175,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2823,6 +3184,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2831,6 +3193,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2839,6 +3202,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2847,6 +3211,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2855,6 +3220,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2863,6 +3229,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2871,6 +3238,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2879,6 +3247,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2887,6 +3256,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2895,6 +3265,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2903,6 +3274,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2911,6 +3283,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2919,6 +3292,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2927,6 +3301,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2935,6 +3310,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2943,6 +3319,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2951,6 +3328,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2959,6 +3337,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2967,6 +3346,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2975,6 +3355,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2983,6 +3364,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -2991,6 +3373,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -2999,6 +3382,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3007,6 +3391,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3015,6 +3400,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3023,6 +3409,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3031,6 +3418,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3039,6 +3427,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3047,6 +3436,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3055,6 +3445,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3063,6 +3454,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3071,6 +3463,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3079,6 +3472,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3087,6 +3481,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3095,6 +3490,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3103,6 +3499,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3111,6 +3508,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3119,6 +3517,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3127,6 +3526,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3135,6 +3535,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3143,6 +3544,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3151,6 +3553,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3159,6 +3562,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3167,6 +3571,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3175,6 +3580,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3183,6 +3589,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3191,6 +3598,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3199,6 +3607,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3207,6 +3616,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3215,6 +3625,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3223,6 +3634,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3231,6 +3643,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3239,6 +3652,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3247,6 +3661,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3255,6 +3670,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3263,6 +3679,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3271,6 +3688,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3279,6 +3697,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3287,6 +3706,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3295,6 +3715,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3303,6 +3724,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3311,6 +3733,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3319,6 +3742,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3327,6 +3751,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3335,6 +3760,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3343,6 +3769,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3351,6 +3778,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3359,6 +3787,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3367,6 +3796,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3375,6 +3805,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3383,6 +3814,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3391,6 +3823,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3399,6 +3832,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3407,6 +3841,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3415,6 +3850,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3423,6 +3859,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3431,6 +3868,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3439,6 +3877,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3447,6 +3886,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3455,6 +3895,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3463,6 +3904,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3471,6 +3913,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3479,6 +3922,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3487,6 +3931,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3495,6 +3940,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3503,6 +3949,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3511,6 +3958,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3519,6 +3967,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3527,6 +3976,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3535,6 +3985,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3543,6 +3994,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3551,6 +4003,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3559,6 +4012,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3567,6 +4021,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3575,6 +4030,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3583,6 +4039,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3591,6 +4048,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3599,6 +4057,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3607,6 +4066,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3615,6 +4075,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3623,6 +4084,7 @@
    "level": "info",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3631,6 +4093,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3639,6 +4102,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3647,6 +4111,7 @@
    "level": "error",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3655,6 +4120,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3663,6 +4129,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3671,6 +4138,7 @@
    "level": "style",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3679,6 +4147,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3687,6 +4156,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3695,6 +4165,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3703,6 +4174,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3711,6 +4183,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3719,6 +4192,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3727,6 +4201,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3735,6 +4210,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3743,6 +4219,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3751,6 +4228,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3759,6 +4237,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3767,6 +4246,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3775,6 +4255,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3783,6 +4264,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3791,6 +4273,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3799,6 +4282,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3807,6 +4291,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -3815,6 +4300,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3823,6 +4309,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3831,6 +4318,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3839,6 +4327,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3847,6 +4336,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3855,6 +4345,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3863,6 +4354,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3871,6 +4363,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3879,6 +4372,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3887,6 +4381,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3895,6 +4390,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3903,6 +4399,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3911,6 +4408,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3919,6 +4417,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3927,6 +4426,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3935,6 +4435,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3943,6 +4444,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3951,6 +4453,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3959,6 +4462,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3967,6 +4471,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3975,6 +4480,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3983,6 +4489,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3991,6 +4498,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -3999,6 +4507,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -4007,6 +4516,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -4015,6 +4525,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -4023,6 +4534,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -4031,6 +4543,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -4039,6 +4552,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -4047,6 +4561,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -4055,6 +4570,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -4063,6 +4579,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -4071,6 +4588,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -4079,6 +4597,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -4087,6 +4606,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -4095,6 +4615,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -4103,6 +4624,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -4111,6 +4633,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -4119,6 +4642,16 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
+   "defaultActive": false
+  },
+  {
+   "key": "SC3058",
+   "name": "SC3058: String operations on $@/$* are not supported in dash and undefined in POSIX sh",
+   "level": "warning",
+   "wiki": false,
+   "wikiOnly": false,
+   "legacy": true,
    "defaultActive": false
   },
   {
@@ -4127,6 +4660,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -4135,6 +4669,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -4143,6 +4678,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": false,
+   "legacy": false,
    "defaultActive": true
   },
   {
@@ -4151,6 +4687,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -4159,6 +4696,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -4167,6 +4705,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -4175,6 +4714,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -4183,6 +4723,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   },
   {
@@ -4191,6 +4732,7 @@
    "level": "warning",
    "wiki": true,
    "wikiOnly": true,
+   "legacy": false,
    "defaultActive": false
   }
  ]

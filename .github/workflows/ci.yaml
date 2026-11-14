@@ -39,6 +39,10 @@ jobs:
           sudo install -m 0755 "$RUNNER_TEMP/shellcheck-$SHELLCHECK_VERSION/shellcheck" /usr/local/bin/shellcheck
           shellcheck --version
 
+      - name: Compile against the oldest supported plugin API
+        # the main code must not use API newer than pluginApiMinVersion (pom.xml sonar.api.min.version)
+        run: ./mvnw -B -ntp -P minimum-api clean compile
+
       - name: Build and test
         # verify writes target/site/jacoco/jacoco.xml; copied dependencies let SonarQube resolve types
         run: ./mvnw -B -ntp verify dependency:copy-dependencies
